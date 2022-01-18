@@ -48,10 +48,6 @@ $(window).on('load', function () {
 $(document).ready(function () {
     "use strict";
 
-    /* -----------------------------------
-    	6. Mobile Toggle Click Setup
-    ----------------------------------- */
-
 
     /* -----------------------------------
     	6. Protfolio Items Setup
@@ -71,10 +67,12 @@ $(document).ready(function () {
     });
 
 
+
     /* -----------------------------------
         13. Validate Contact Form
     ----------------------------------- */
     if ($("#contact-form").length) {
+
         $("#contact-form").validate({
             rules: {
                 name: {
@@ -94,7 +92,7 @@ $(document).ready(function () {
             submitHandler: function (form) {
                 $.ajax({
                     type: "POST",
-                    url: "/mail.php",
+                    url: "/inbox/email/recived",
                     data: $(form).serialize(),
                     success: function () {
                         $("#loader").hide();
@@ -117,6 +115,34 @@ $(document).ready(function () {
 
         });
     }
+
+
+
+    var groups = {};
+    $('.galleryItem').each(function() {
+        var id = parseInt($(this).attr('data-group'), 10);
+
+        if(!groups[id]) {
+            groups[id] = [];
+        }
+
+        groups[id].push( this );
+
+    });
+
+
+    $.each(groups, function() {
+
+    $(this).magnificPopup({
+        type: 'image',
+        closeOnContentClick: true,
+        closeBtnInside: false,
+        gallery: { enabled:true }
+    })
+
+    });
+
+
 
 
 });

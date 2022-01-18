@@ -13,10 +13,6 @@ class SocialLinkController extends Controller{
         $this->middleware(['auth','verified']);
     }
 
-    /**
-     * Display a listing of the resource.
-     * @return \Illuminate\Http\Response
-    */
     public function index(){
         $all_social_accounts = SocialLink::all();
         $icon_list = SocialIcons::all();
@@ -26,11 +22,6 @@ class SocialLinkController extends Controller{
         ]);
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     * @return \Illuminate\Http\Response
-    */
     public function create(){
         $icon_list = SocialIcons::all();
         return view('backend.social-account.create',[
@@ -38,11 +29,6 @@ class SocialLinkController extends Controller{
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-    */
     public function store(Request $request){
 
         $request->validate([
@@ -66,31 +52,11 @@ class SocialLinkController extends Controller{
 
     }
 
-    /**
-     * Display the specified resource.
-     * @param  \App\Models\SocialLink  $socialLink
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SocialLink $socialLink){
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param  \App\Models\SocialLink  $socialLink
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Request $request){
         $social_data = SocialLink::find($request->social_id);
         return $social_data;
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SocialLink  $socialLink
-     * @return \Illuminate\Http\Response
-    */
     public function update(Request $request){
 
         SocialLink::find($request->account_id)->update([
@@ -102,18 +68,6 @@ class SocialLinkController extends Controller{
         return back();
 
     }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param  \App\Models\SocialLink  $socialLink
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(SocialLink $socialLink, $id){
-        $social_link = SocialLink::find($id);
-        $social_link->delete();
-        return back()->with('success_delete', ''.ucfirst($social_link->name).' Social Deleted Successfully');
-    }
-
 
     public function statusupdate(Request $request){
 
@@ -135,6 +89,13 @@ class SocialLinkController extends Controller{
 
 
     }
+
+    public function destroy(SocialLink $socialLink, $id){
+        $social_link = SocialLink::find($id);
+        $social_link->delete();
+        return back()->with('success_delete', ''.ucfirst($social_link->name).' Social Deleted Successfully');
+    }
+
 
 
 }

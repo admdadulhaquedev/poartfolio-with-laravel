@@ -45,19 +45,6 @@
                                         <input name="CategoryName" type="text" placeholder="Categorie Name" class="@error('CategoryName') is-invalid @enderror form-control">
 									</div>
 
-                                    <div class="form-group">
-                                        <label>Category Photo</label>
-                                        <input name="CategoryPhoto" class="@error('CategoryPhoto') is-invalid @enderror form-control" type="file">
-
-                                        <small class="text-secondary">
-                                            Recommended image size is
-                                            <b>
-                                                150px x 150px
-                                            </b>
-                                        </small>
-                                    </div>
-
-
 									<div class="form-group">
 										<label class="display-block w-100">Categorie Status</label>
 										<div>

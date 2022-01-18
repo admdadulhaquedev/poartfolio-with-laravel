@@ -264,7 +264,7 @@
 															<tr>
 																<!-- ID:TXT ACTIVATE TITLE -->
 																<td align="center" class="MsoNormal" style="color:#ffffff; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; font-weight:600; font-size:22px; line-height:32px; letter-spacing:1px;">
-																	<multiline> Thank You Connect With Us, We recived your Email Successfully </multiline>
+																	<multiline> Thank You Connect With Me, I recived your Email Successfully </multiline>
 																</td>
 															</tr>
 															<tr>

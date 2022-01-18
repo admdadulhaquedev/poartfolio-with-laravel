@@ -18,7 +18,6 @@ class EmailController extends Controller{
     }
 
 
-
     public function singleemail($id){
         ContactUs::find($id)->update([
             'read_at' => "read"

@@ -6,10 +6,6 @@ use App\Models\ContactInfo;
 use Illuminate\Http\Request;
 
 class ContactInfoController extends Controller {
-    /**
-     * Display a listing of the resource.
-     * @return \Illuminate\Http\Response
-    */
 
     public function __construct(){
         $this->middleware(['auth','verified']);
@@ -19,14 +15,6 @@ class ContactInfoController extends Controller {
         return view('backend.contact-info.index');
     }
 
-
-
-    /**
-     * Update the specified resource in storage.
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ContactInfo  $contactInfo
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id){
 
         $request->validate([
@@ -36,7 +24,7 @@ class ContactInfoController extends Controller {
         ContactInfo::find($id)->update([
             'email' => $request->email,
             'phone' => $request->phone,
-            'fax' => $request->fax,
+            'whatsApp' => $request->whatsApp,
             'address' => $request->address,
             'contact_info_text' => $request->contact_info_text,
         ]);

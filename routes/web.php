@@ -8,7 +8,7 @@ use App\Http\Controllers\{
     EmailController,
     FrontendController,
     HomeController,
-    PostController,
+    PortfolioController,
     ProfileController,
     SettingController,
     SocialLinkController,
@@ -48,14 +48,29 @@ Route::get('category/destroy{id}', [CategoryController::class, 'destroy'])->name
 Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
 Route::post('/settings/update', [SettingController::class, 'settingsupdate'])->name('settings.update');
 
+
+
+
+
+
 // Post Controller
-Route::get('post', [PostController::class, 'index'])->name('post.index')->middleware('rolecheck');
-Route::get('post/create', [PostController::class, 'create'])->name('post.create');
-Route::get('post/show{slug}', [PostController::class, 'show'])->name('post.show');
-Route::get('post/edit{slug}', [PostController::class, 'edit'])->name('post.edit');
-Route::post('post/store', [PostController::class, 'store'])->name('post.store');
-Route::get('post/update{slug}', [PostController::class, 'update'])->name('post.update');
-Route::get('post/destroy{slug}', [PostController::class, 'destroy'])->name('post.destroy');
+Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio.index')->middleware('rolecheck');
+Route::get('portfolio/create', [PortfolioController::class, 'create'])->name('portfolio.create');
+Route::get('portfolio/show{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
+Route::get('portfolio/edit{slug}', [PortfolioController::class, 'edit'])->name('portfolio.edit');
+Route::post('portfolio/store', [PortfolioController::class, 'store'])->name('portfolio.store');
+Route::get('portfolio/update{slug}', [PortfolioController::class, 'update'])->name('portfolio.update');
+Route::get('portfolio/destroy{slug}', [PortfolioController::class, 'destroy'])->name('portfolio.destroy');
+
+
+
+
+
+
+
+
+
+
 
 
 // SocialLink Controller
@@ -82,21 +97,21 @@ Route::get('inbox/email/destroy{id}', [EmailController::class, 'inboxemaildestro
 Route::get('requestedRegister/trash', [TrashController::class, 'requestedRegisterTrashView'])->name('requestedRegister.trash')->middleware('rolecheck');
 Route::get('category/trash', [TrashController::class, 'categoryTreashView'])->name('category.trash')->middleware('rolecheck');
 Route::get('inboxEmail/trash', [TrashController::class, 'inboxEmailTreashView'])->name('inboxEmail.trash')->middleware('rolecheck');
-Route::get('post/trash', [TrashController::class, 'postTreashView'])->name('post.trash');
+Route::get('portfolio/trash', [TrashController::class, 'portfolioTreashView'])->name('portfolio.trash');
 Route::get('socialLink/trash', [TrashController::class, 'socialLinkTreashView'])->name('socialLink.trash')->middleware('rolecheck');
 
 // ->Trash Restore
 Route::get('requestedRegister/restore{id}', [TrashController::class, 'requestedRegisterRestore'])->name('requestedRegister.restore')->middleware('rolecheck');
 Route::get('category/restore{id}', [TrashController::class, 'categoryRestore'])->name('category.restore')->middleware('rolecheck');
 Route::get('inboxEmail/restore{id}', [TrashController::class, 'inboxEmailRestore'])->name('inboxEmail.restore')->middleware('rolecheck');
-Route::get('post/restore{id}', [TrashController::class, 'postRestore'])->name('post.restore');
+Route::get('portfolio/restore{id}', [TrashController::class, 'portfolioRestore'])->name('portfolio.restore');
 Route::get('socialLink/restore{id}', [TrashController::class, 'socialLinkRestore'])->name('socialLink.restore')->middleware('rolecheck');
 
 // ->Trash Force Delete
 Route::get('requestedRegister/force/delete{id}', [TrashController::class, 'requestedRegisterForceDelete'])->name('requestedRegister.forcedelete')->middleware('rolecheck');
 Route::get('category/force/delete{id}', [TrashController::class, 'categoryForceDelete'])->name('category.forcedelete')->middleware('rolecheck');
 Route::get('inboxEmail/force/delete{id}', [TrashController::class, 'inboxEmailForceDelete'])->name('inboxEmail.forcedelete')->middleware('rolecheck');
-Route::get('post/force/delete{id}', [TrashController::class, 'postForceDelete'])->name('post.forcedelete');
+Route::get('portfolio/force/delete{id}', [TrashController::class, 'portfolioForceDelete'])->name('portfolio.forcedelete');
 Route::get('socialLink/force/delete{id}', [TrashController::class, 'socialLinkForceDelete'])->name('socialLink.forcedelete')->middleware('rolecheck');
 
 
@@ -104,8 +119,10 @@ Route::get('socialLink/force/delete{id}', [TrashController::class, 'socialLinkFo
 // FrontEndController
 
 Route::get('/', [FrontendController::class, 'index'])->name('/');
-Route::get('/portfolio/{slug}', [FrontendController::class, 'portfolio'])->name('portfolio');
-Route::get('/portfolios', [FrontendController::class, 'portfolios'])->name('portfolios');
+Route::get('/all/portfolios', [FrontendController::class, 'allportfolios'])->name('allportfolios');
+
+
+Route::get('/single/portfolio{slug}', [FrontendController::class, 'singleportfolio'])->name('singleportfolio');
 
 
 

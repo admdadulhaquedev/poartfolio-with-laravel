@@ -10,7 +10,6 @@ class ContactUs extends Model{
     protected $fillable = [
         "name",
         "email",
-        "phone",
         "messages",
         "read_at",
     ];

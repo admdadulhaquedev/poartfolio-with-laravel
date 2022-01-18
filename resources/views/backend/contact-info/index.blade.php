@@ -29,7 +29,7 @@
                     <ul class="list-unstyled invoice-payment-details mb-0">
                         <li>Email: <span>{{ ContactInfo()->email }}</span></li>
                         <li>Phone: <span>{{ ContactInfo()->phone }}</span></li>
-                        <li>Fax: <span>{{ ContactInfo()->fax }}</span></li>
+                        <li>WhatsApp: <span>{{ ContactInfo()->whatsApp }}</span></li>
                         <li>Address: <span>{{ ContactInfo()->address }}</span></li>
                     </ul>
                 </div>
@@ -79,7 +79,7 @@
                         <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <label>Fax</label>
-                                <input name="fax" type="text" class="form-control" value="{{ ContactInfo()->fax }}">
+                                <input name="whatsApp" type="text" class="form-control" value="{{ ContactInfo()->whatsApp }}">
                             </div>
                         </div>
                         <div class="col-12">

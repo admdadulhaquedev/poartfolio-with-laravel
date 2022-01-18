@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Add;
 use App\Models\Category;
 use App\Models\ContactUs;
-use App\Models\EmailSubscriber;
-use App\Models\Post;
+use App\Models\Portfolio;
 use App\Models\SocialLink;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,14 +39,14 @@ class TrashController extends Controller{
     }
 
 
-    public function postTreashView() {
+    public function portfolioTreashView() {
         if (Auth::user()->role == 1) {
-            $only_trash_post = Post::onlyTrashed()->get();
+            $only_trash_portfolio = Portfolio::onlyTrashed()->get();
         } else {
-            $only_trash_post = Post::onlyTrashed()->where('auth_id', Auth::id())->get();
+            $only_trash_portfolio = Portfolio::onlyTrashed()->where('auth_id', Auth::id())->get();
         }
         return view('backend.trash.post-trash',[
-            'only_trash_post' => $only_trash_post
+            'only_trash_portfolio' => $only_trash_portfolio
         ]);
     }
 
@@ -81,9 +79,9 @@ class TrashController extends Controller{
 
 
 
-    public function postRestore($id) {
-        Post::onlyTrashed()->find($id)->restore();
-        return back()->with('success_undo', 'Post undo Successfully');
+    public function portfolioRestore($id) {
+        Portfolio::onlyTrashed()->find($id)->restore();
+        return back()->with('success_undo', 'Portfolio undo Successfully');
     }
 
     public function socialLinkRestore($id) {
@@ -113,8 +111,8 @@ class TrashController extends Controller{
     }
 
 
-    public function postForceDelete($id) {
-        Post::onlyTrashed()->find($id)->forceDelete();
+    public function portfolioForceDelete($id) {
+        Portfolio::onlyTrashed()->find($id)->forceDelete();
         return back()->with('success_undo', 'Deleted Successfully');
     }
 

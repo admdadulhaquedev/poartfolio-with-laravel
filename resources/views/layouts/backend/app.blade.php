@@ -255,19 +255,19 @@
 
                         <!-- POST -->
                         <li class="submenu">
-                            <a class="{{ ((Request::route()->getName() == 'post.index')||(Request::route()->getName() == 'post.create')) ? 'active' : '' }}" href="#">
-                                <span>Post</span>
+                            <a class="{{ ((Request::route()->getName() == 'portfolio.index')||(Request::route()->getName() == 'portfolio.create')) ? 'active' : '' }}" href="#">
+                                <span>Portfolio</span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul style="display: none;">
                                 <li>
-                                    <a class="{{ (Request::route()->getName() == 'post.create') ? 'active' : '' }}" href="{{ route('post.create') }}"> Add Post </a>
+                                    <a class="{{ (Request::route()->getName() == 'portfolio.create') ? 'active' : '' }}" href="{{ route('portfolio.create') }}"> Add Portfolio </a>
                                 </li>
 
                                 <!-- Only for Administrator -->
                                 @if (Auth::user()->role == 1)
                                 <li>
-                                    <a class="{{ (Request::route()->getName() == 'post.index') ? 'active' : '' }}" href="{{ route('post.index') }}"> All Post</a>
+                                    <a class="{{ (Request::route()->getName() == 'portfolio.index') ? 'active' : '' }}" href="{{ route('portfolio.index') }}"> All Portfolio</a>
                                 </li>
                                 @endif
                                 <!-- /Only for Administrator -->
@@ -311,7 +311,7 @@
                         </li>
 
                         <li class="submenu">
-                            <a class="{{ ((Request::route()->getName() == 'requestedRegister.trash')||(Request::route()->getName() == 'category.trash')||(Request::route()->getName() == 'inboxEmail.trash')||(Request::route()->getName() == 'post.trash')||(Request::route()->getName() == 'socialLink.trash')||(Request::route()->getName() == 'add.trash')) ? 'active' : '' }}" href="#">
+                            <a class="{{ ((Request::route()->getName() == 'requestedRegister.trash')||(Request::route()->getName() == 'category.trash')||(Request::route()->getName() == 'inboxEmail.trash')||(Request::route()->getName() == 'portfolio.trash')||(Request::route()->getName() == 'socialLink.trash')||(Request::route()->getName() == 'add.trash')) ? 'active' : '' }}" href="#">
                                 <span>Trash</span>
                                 <span class="menu-arrow"></span>
                             </a>
@@ -332,7 +332,7 @@
                                     </li>
                                 @endif
                                 <li class="">
-                                    <a class="{{ (Request::route()->getName() == 'post.trash') ? 'active' : '' }}" href="{{ route('post.trash') }}">Post</a>
+                                    <a class="{{ (Request::route()->getName() == 'portfolio.trash') ? 'active' : '' }}" href="{{ route('portfolio.trash') }}">Portfolio</a>
                                 </li>
 
                             </ul>

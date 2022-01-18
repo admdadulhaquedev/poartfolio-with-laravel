@@ -8,11 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Title -->
-    <title>Personal Portfolio Template</title>
+    <title>Personal Portfolio</title>
 
     <!-- CSS Plugins -->
     <link rel="stylesheet" href="{{ asset('frontend/css/plugins/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/plugins/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/plugins/magnific-popup.css') }}">
 
     <!-- CSS Base -->
     <link rel="stylesheet" class="theme-st" href="{{ asset('frontend/css/style.css') }}">
@@ -40,10 +41,9 @@
                 <span></span>
                 <span></span>
                 <span></span>
-
                 <ul id="menu">
-                    <a href="#parsonal_info">
-                        <li>About</li>
+                    <a href="{{ route('/') }}">
+                        <li>Profile</li>
                     </a>
                     <a href="#protfolios">
                         <li>Protfolios</li>
@@ -64,8 +64,10 @@
 
     <!-- All Script -->
     <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('frontend/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
 
 </body>

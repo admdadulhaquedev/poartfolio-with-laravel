@@ -48,11 +48,7 @@
                                                 {{ ++$key }}
                                             </td>
                                             <td>
-                                                <h2 class="table-avatar">
-                                                    <a href="#" class="avatar avatar-sm mr-2">
-                                                        <img class="avatar-img rounded-circle" src="{{asset('uploads/categories')}}/{{ $category->category_photo }}" alt="User Image"></a>
-                                                    <a href="#">{{ $category->category_name }}</a>
-                                                </h2>
+                                                {{ $category->category_name }}
                                             </td>
                                             <td>{{ $category->created_at->format('D/M/Y') }}</td>
                                             <td class="text-center">
@@ -107,15 +103,6 @@
                                     <label>Category Name</label>
                                     <input class="form-control" type="text" value="" name="category_name" id="category_name">
                                     <input class="form-control" type="hidden" value="" name="category_id" id="category_id">
-                                </div>
-                                <div class="form-group">
-                                    <label>Category Image</label>
-                                    <input class="form-control" type="file" name="category_image" onchange="document.getElementById('category_image').src = window.URL.createObjectURL(this.files[0])">
-                                </div>
-                                <div class="form-group">
-                                    <div class="avatar">
-                                        <img id="category_image" class="avatar-img rounded" src=""  alt="">
-                                    </div>
                                 </div>
                                 <div class="mt-4">
                                     <button class="btn btn-primary" name="form_submit" value="submit" type="submit">Save Changes</button>
@@ -178,8 +165,6 @@
                 success: function (data) {
                     $('#category_name').val(data.category_name);
                     $('#category_id').val(data.id);
-                    $('#category_image').attr('src', 'http://127.0.0.1:8000/uploads/categories/'+data.category_photo);
-                    // $('#category_image').attr('src', window.URL+data.category_photo);
                 }
             });
 
@@ -205,7 +190,6 @@
                     category_id: category_id,
                 },
                 success: function (data) {
-                    // $('#sub_category').html(data);
                     console.log(data);
                 }
             });

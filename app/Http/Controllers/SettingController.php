@@ -12,15 +12,12 @@ class SettingController extends Controller{
         $this->middleware(['auth','verified']);
     }
 
-
     public function index(){
         $settings = Setting::all()->first();
         return view('backend.settings.index',[
             'settings' => $settings,
         ]);
     }
-
-
 
     public function settingsupdate(Request $request){
         $setting_id = Setting::all()->first()->id;
@@ -144,4 +141,5 @@ class SettingController extends Controller{
         return back();
 
     }
+
 }

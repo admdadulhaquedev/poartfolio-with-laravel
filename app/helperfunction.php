@@ -3,6 +3,7 @@
 use App\Models\Category;
 use App\Models\ContactInfo;
 use App\Models\ContactUs;
+use App\Models\Portfolio;
 use App\Models\Post;
 use App\Models\Setting;
 use App\Models\SocialLink;
@@ -34,7 +35,7 @@ function  CategorybyID($id){
 }
 
 function  PostByCategory($category_id){
-    return Post::latest()->where('category_id', $category_id)->where('status', 1)->get();
+    return Portfolio::latest()->where('category_id', $category_id)->where('status', 1)->get();
 }
 
 function TodayDate(){

@@ -7,12 +7,12 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-12">
-                    <h3 class="page-title">Post</h3>
+                    <h3 class="page-title">Portfolio</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="index_admin.html">Dashboard</a>
                         </li>
-                        <li class="breadcrumb-item active">Post</li>
+                        <li class="breadcrumb-item active">Portfolio</li>
                     </ul>
                 </div>
             </div>
@@ -38,36 +38,36 @@
                                 <thead>
                                     <tr>
                                         <th>Author Name</th>
-                                        <th>Post Title</th>
-                                        <th>Post Time</th>
+                                        <th>Portfolio Title</th>
+                                        <th>Portfolio Time</th>
                                         <th class="text-right">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($only_trash_post as $key => $post)
+                                    @foreach ($only_trash_portfolio as $key => $portfolio)
 
                                         <tr>
                                             <td>
                                                 <h2 class="table-avatar">
                                                     <a href="#" class="avatar avatar-sm mr-2">
-                                                        <img class="avatar-img rounded-circle" src="{{ asset('uploads/profiles') }}/{{ $post->relationtouser->photo }}"alt="User Image"></a>
-                                                    <a href="#">{{ $post->relationtouser->name }}</a>
+                                                        <img class="avatar-img rounded-circle" src="{{ asset('uploads/profiles') }}/{{ $portfolio->relationtouser->photo }}"alt="User Image"></a>
+                                                    <a href="#">{{ $portfolio->relationtouser->name }}</a>
                                                 </h2>
                                             </td>
-                                            <td class="text">{{ $post->mega_title }}</td>
+                                            <td class="text">{{ $portfolio->mega_title }}</td>
                                             <td>
-                                                {{ $post->created_at->format('M d Y') }}
+                                                {{ $portfolio->created_at->format('M d Y') }}
                                                 <span class="text-primary d-block">
-                                                    {{ $post->created_at->format('h:m:s') }}
+                                                    {{ $portfolio->created_at->format('h:m:s') }}
                                                 </span>
                                             </td>
                                             <td class="text-right">
                                                 <div class="actions">
-                                                    <a href="{{ route('post.restore',$post->id) }}" class="btn btn-sm bg-info-light">
+                                                    <a href="{{ route('portfolio.restore',$portfolio->id) }}" class="btn btn-sm bg-info-light">
                                                         <i class="fa fa-trash-undo"></i>
                                                         Undo
                                                    </a>
-                                                    <a data-id="{{ $post->id }}" data-toggle="modal" href="#delete" class="btn btn-sm bg-danger-light">
+                                                    <a data-id="{{ $portfolio->id }}" data-toggle="modal" href="#delete" class="btn btn-sm bg-danger-light">
                                                         <i class="fe fe-trash"></i>
                                                         Delete Forever
                                                     </a>
@@ -121,7 +121,7 @@
     $('a[data-toggle="modal"]').on('click', function () {
         var deleteID = $(this).attr("data-id");
 
-        var url = '{{ route("post.forcedelete", ":id") }}';
+        var url = '{{ route("portfolio.forcedelete", ":id") }}';
         url = url.replace(':id', deleteID);
 
         $('.confirm_delete').append('<a class="btn btn-primary" href="'+url+'">Delete</a>');

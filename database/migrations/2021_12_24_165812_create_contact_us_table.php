@@ -13,9 +13,7 @@ class CreateContactUsTable extends Migration{
     public function up(){
         Schema::create('contact_us', function (Blueprint $table) {
             $table->id();
-            $table->string('table_name')->default("message");
             $table->string('name')->nullable();
-            $table->string('phone')->nullable();
             $table->string('email');
             $table->string('messages');
             $table->string('read_at')->default('un_read');

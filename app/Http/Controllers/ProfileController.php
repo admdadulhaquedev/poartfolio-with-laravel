@@ -14,58 +14,10 @@ class ProfileController extends Controller{
         $this->middleware(['auth','verified']);
     }
 
-    /**
-     * Display a listing of the resource.
-     * @return \Illuminate\Http\Response
-     */
     public function index(){
-
-        // gs.getSession().getClientIP().toString();
-
         return view('backend.profile.profile');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return \Illuminate\Http\Response
-     */
-    public function create(){
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request){
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id){
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id){
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id){
 
         User::find($id)->update([
@@ -113,33 +65,9 @@ class ProfileController extends Controller{
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id){
-        //
-    }
-
-
-
-    public function lockscreen(){
-        return view('backend.lock-screen.lock-screen');
-    }
-
     public function newregister(){
         return view('backend.authentication.register');
     }
-
-    public function error404(){
-        return view('backend.error.error-404');
-    }
-
-    public function error500(){
-        return view('backend.error.error-500');
-    }
-
 
     public function passwordChange(Request $request){
 

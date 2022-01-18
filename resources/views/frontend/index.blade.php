@@ -57,7 +57,7 @@
 									</div>
 								</div>
 								<div class="col-lg-3 col-sm-8 pt-50">
-									<a href="cv/Cv.pdf" download class="btn-st">Download CV</a>
+									<a href="{{ asset('uploads/cv/amdadulhaquemelon-cv.pdf') }}" download class="btn-st">Download CV</a>
 								</div>
 							</div>
 						</div>
@@ -94,7 +94,6 @@
 									<figcaption>
 										<h3>Project Name</h3>
 										<p>Graphic</p><i class="fas fa-image"></i>
-										<a class="image-link" href="img/portfolio/img-1.jpg"></a>
 									</figcaption>
 								</figure>
 							</div>
@@ -107,7 +106,7 @@
 									<figcaption>
 										<h3>Project Name</h3>
 										<p>Design</p><i class="fas fa-image"></i>
-										<a class="image-link" href="img/portfolio/img-2.jpg"></a>
+										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
 									</figcaption>
 								</figure>
 							</div>
@@ -120,7 +119,7 @@
 									<figcaption>
 										<h3>Project Name</h3>
 										<p>Graphic</p><i class="fas fa-video"></i>
-										<a class="video-link" href="https://www.youtube.com/watch?v=k_okcNVZqqI"></a>
+										<a class="video-link" href="{{ route('singleportfolio', 2) }}"></a>
 									</figcaption>
 								</figure>
 							</div>
@@ -133,7 +132,7 @@
 									<figcaption>
 										<h3>Project Name</h3>
 										<p>Design</p><i class="fas fa-image"></i>
-										<a class="image-link" href="img/portfolio/img-4.jpg"></a>
+										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
 									</figcaption>
 								</figure>
 							</div>
@@ -146,7 +145,7 @@
 									<figcaption>
 										<h3>Project Name</h3>
 										<p>Design</p><i class="fas fa-video"></i>
-										<a class="video-link" href="https://www.youtube.com/watch?v=k_okcNVZqqI"></a>
+										<a class="video-link" href="{{ route('singleportfolio', 2) }}"></a>
 									</figcaption>
 								</figure>
 							</div>
@@ -159,7 +158,7 @@
 									<figcaption>
 										<h3>Project Name</h3>
 										<p>Brand</p><i class="fas fa-image"></i>
-										<a class="image-link" href="img/portfolio/img-6.jpg"></a>
+										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
 									</figcaption>
 								</figure>
 							</div>
@@ -172,7 +171,7 @@
 									<figcaption>
 										<h3>Project Name</h3>
 										<p>Brand</p><i class="fas fa-image"></i>
-										<a class="image-link" href="img/portfolio/img-7.jpg"></a>
+										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
 									</figcaption>
 								</figure>
 							</div>
@@ -185,7 +184,7 @@
 									<figcaption>
 										<h3>Project Name</h3>
 										<p>Brand</p><i class="fas fa-image"></i>
-										<a class="image-link" href="img/portfolio/img-8.jpg"></a>
+										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
 									</figcaption>
 								</figure>
 							</div>
@@ -199,7 +198,7 @@
 										<h3>Project Name</h3>
 										<p>Graphic</p>
                                         <i class="fas fa-image"></i>
-										<a class="image-link" href="img/portfolio/img-9.jpg"></a>
+										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
 									</figcaption>
 								</figure>
 							</div>
@@ -211,7 +210,7 @@
 						<!-- All View Button -->
 						<div class="row mt-100 mb-90">
 							<div class="col-lg-12 col-sm-12 text-center">
-								<a href="{{ route('portfolios') }}" class="btn-st">VIEW MORE</a>
+								<a href="{{ route('allportfolios') }}" class="btn-st">VIEW MORE</a>
 							</div>
 						</div>
 						<!-- / All View Button -->
@@ -287,13 +286,13 @@
 				<div class="row mt-100">
 					<div class="col-lg-12 col-sm-12">
 						<div class="header-box mb-50">
-							<h3>Send Us Message</h3>
+							<h3>Send Me Message</h3>
 						</div>
 						<div class="contact-form ">
 
-
-							<form method="post" class="contact-valid" id="contact-form">
-								<div class="row">
+							<form action="{{ route('inboxemail.recived') }}" method="post" class="contact-valid" id="contact-form">
+								@csrf
+                                <div class="row">
 									<div class="col-lg-6 col-sm-12">
 										<input type="text" name="name" id="name" class="form-control"
 											placeholder="Name *">
@@ -389,8 +388,6 @@
 			</div>
 		</footer>
 		<!-- / Footer Section -->
-
-
 
 	</div>
 	<!-- / Main Page -->
