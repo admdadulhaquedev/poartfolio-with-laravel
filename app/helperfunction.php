@@ -4,6 +4,7 @@ use App\Models\Category;
 use App\Models\ContactInfo;
 use App\Models\ContactUs;
 use App\Models\Portfolio;
+use App\Models\PortfoliosImages;
 use App\Models\Post;
 use App\Models\Setting;
 use App\Models\SocialLink;
@@ -40,4 +41,9 @@ function  PostByCategory($category_id){
 
 function TodayDate(){
     return Carbon::now()->format('d M Y');
+}
+
+
+function PortfolioImagesByIDTitle($id,$title){
+    return PortfoliosImages::where('portfolio_id',$id)->where('images_title',$title)->get();
 }

@@ -11,7 +11,6 @@ class Portfolio extends Model {
         "title",
         "logo",
         "category_id",
-        "images_id",
         "slug",
         "status",
         "project_views",

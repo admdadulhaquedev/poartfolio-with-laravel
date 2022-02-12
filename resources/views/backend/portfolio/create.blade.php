@@ -43,18 +43,20 @@
 
 
                                     <div class="form-group">
-                                        <label>Portfolio Name</label>
-                                        <input name="name" class="form-control" type="text">
+                                        <label>Portfolio Title</label>
+                                        <input name="title" class="form-control" type="text">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Portfolio Logo</label>
-                                        <input name="logo" class="form-control" type="file">
+                                        <input name="portfolio_logo" class="form-control" type="file">
+                                        <span>Photo Sizs: 350px X 350px</span>
                                     </div>
 
+
                                     <div class="form-group">
-                                        <label>Portfolio Images</label>
-                                        <input name="images[]" multiple class="form-control" type="file">
+                                        <label>Portfolio Live Link</label>
+                                        <input name="portfolio_link" class="form-control" type="text">
                                     </div>
 
                                     <div class="row">

@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 
 class TrashController extends Controller{
     public function __construct(){
-        $this->middleware(['auth','verified']);
+        // $this->middleware(['auth','verified']);
+        $this->middleware(['auth']);
     }
 
     // Start All View

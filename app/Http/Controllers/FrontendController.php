@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Mail\RecivedEmail;
+use App\Models\ContactInfo;
 use App\Models\ContactUs;
+use App\Models\Portfolio;
+use App\Models\SocialLink;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -15,7 +18,18 @@ class FrontendController extends Controller{
     }
 
     public function index(){
-        return view('frontend.index');
+
+        $portfolios = Portfolio::all();
+        $contuct_info = ContactInfo::first();
+        $social_accounts = SocialLink::all();
+
+
+
+        return view('frontend.index',[
+            'portfolios' => $portfolios,
+            'contuct_info' => $contuct_info,
+            'social_accounts' => $social_accounts,
+        ]);
     }
 
     public function singleportfolio($slug){

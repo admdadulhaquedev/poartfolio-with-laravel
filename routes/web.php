@@ -9,6 +9,7 @@ use App\Http\Controllers\{
     FrontendController,
     HomeController,
     PortfolioController,
+    PortfolioImagesController,
     ProfileController,
     SettingController,
     SocialLinkController,
@@ -23,12 +24,10 @@ use App\Http\Controllers\{
 
 // Home Controller
 // Authantication
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
+Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/register/requested', [HomeController::class, 'registerrequested'])->name('register.requested');
-Route::get('register/requested/destroy{id}', [HomeController::class, 'destroy'])->name('registerrequested.destroy');
-
 
 // Profile Controller
 Route::resource('profile', ProfileController::class);
@@ -49,11 +48,10 @@ Route::get('/settings', [SettingController::class, 'index'])->name('settings.ind
 Route::post('/settings/update', [SettingController::class, 'settingsupdate'])->name('settings.update');
 
 
+Route::get('portfolio/images/create', [PortfolioImagesController::class, 'create'])->name('portfolioimages.create');
+Route::post('portfolio/images/store', [PortfolioImagesController::class, 'store'])->name('portfolioimages.store');
 
-
-
-
-// Post Controller
+// Portfolio Controller
 Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio.index')->middleware('rolecheck');
 Route::get('portfolio/create', [PortfolioController::class, 'create'])->name('portfolio.create');
 Route::get('portfolio/show{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');

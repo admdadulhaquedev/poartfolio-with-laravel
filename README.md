@@ -21,7 +21,7 @@ Please check the official laravel installation guide for server requirements bef
 
 Clone the repository
 
-    git clone git@github.com:amdadulhaquemelon-dev/blog.git
+    git clone git@github.com:admdadulhaquedev/poartfolio.git
 
 Switch to the repo folder
 
@@ -55,7 +55,7 @@ You can now access the server at http://localhost:8000
 
 **TL;DR command list**
 
-    git clone git@github.com:amdadulhaquemelon-dev/blog.git
+    git clone git@github.com:admdadulhaquedev/poartfolio.git
     cd laravel-realworld-example-app
     composer install
     cp .env.example .env
@@ -125,11 +125,11 @@ This applications uses [Laravel](https://laravel.com/docs/8.x/authentication) - 
 - https://laravel.com/docs/8.x/authentication#introduction
 
 ----------
-<!-- 
+
 # See Demo in LIVE SERVER
  
 
-- https://www.unishshoekattor24.com/ -->
+- https://www.amdadulhaque.dev/
 
 
 If You face any error Please Contact me

@@ -188,7 +188,7 @@
                         <!-- /SETTINGS -->
 
                         <!-- AUTHANTICATION -->
-                        <li class="submenu ">
+                        {{-- <li class="submenu ">
                             <a class="{{ ((Request::route()->getName() == 'register') || (Request::route()->getName() == 'register.requested')) ? 'active' : '' }}" href="#">
                                 <span> Authentication </span>
                                 <span class="menu-arrow"></span>
@@ -201,7 +201,7 @@
                                     <a class="{{ (Request::route()->getName() == 'register.requested') ? 'active' : '' }}" href="{{ route('register.requested') }}"> Requested Register </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!-- /AUTHANTICATION -->
 
                         @endif
@@ -264,12 +264,14 @@
                                     <a class="{{ (Request::route()->getName() == 'portfolio.create') ? 'active' : '' }}" href="{{ route('portfolio.create') }}"> Add Portfolio </a>
                                 </li>
 
+                                <li>
+                                    <a class="{{ (Request::route()->getName() == 'portfolioimages.create') ? 'active' : '' }}" href="{{ route('portfolioimages.create') }}"> Add Portfolio Images </a>
+                                </li>
+
                                 <!-- Only for Administrator -->
-                                @if (Auth::user()->role == 1)
                                 <li>
                                     <a class="{{ (Request::route()->getName() == 'portfolio.index') ? 'active' : '' }}" href="{{ route('portfolio.index') }}"> All Portfolio</a>
                                 </li>
-                                @endif
                                 <!-- /Only for Administrator -->
 
                             </ul>

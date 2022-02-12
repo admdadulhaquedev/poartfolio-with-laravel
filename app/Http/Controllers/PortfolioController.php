@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Portfolio;
+use App\Models\PortfoliosImages;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,8 @@ use Intervention\Image\ImageManagerStatic as Image;
 class PortfolioController extends Controller{
 
     public function __construct(){
-        $this->middleware(['auth','verified']);
+        // $this->middleware(['auth','verified']);
+        $this->middleware(['auth']);
     }
 
     public function index(){
@@ -40,20 +42,25 @@ class PortfolioController extends Controller{
         function make_slug($string) {
             return preg_replace('/\s+/u', '-', trim($string));
         }
-        $post_slug = make_slug(Str::lower($request->post_title));
+        $portfolio_slug = make_slug(Str::lower($request->title));
 
+        // New Img Name Create
+        $portfolio_logo_ext = $request->file("portfolio_logo")->getClientOriginalExtension();
+        $portfolio_logo_name = "portfolio"."-"."logo"."-".Str::lower($request->title).".".$portfolio_logo_ext;
 
-        Portfolio::insert([
-            'title' => $request->post_title,
-            'logo' => $request->post_title,
-            'category_id' => $request->post_category,
-            'images_id' => $request->post_category,
-            'slug' => $post_slug,
-            'project_link' => $post_slug,
-            'status' => $request->post_status,
+        // Make & Save Img
+        $img = Image::make($request->file("portfolio_logo"));
+        $img->save(base_path('public/uploads/potfollios/logos/'.$portfolio_logo_name));
+
+        $portfolio_id = Portfolio::insertGetId([
+            'title' => $request->title,
+            'logo' => $portfolio_logo_name,
+            'category_id' => $request->portfolio_category,
+            'slug' => $portfolio_slug,
+            'project_link' => $request->portfolio_link,
+            'status' => $request->portfolio_status,
             'created_at' => Carbon::now()
         ]);
-
 
 
         return back();
@@ -67,6 +74,7 @@ class PortfolioController extends Controller{
         ]);
     }
 
+
     public function edit($slug){
         $post_details = Portfolio::where('slug',$slug)->first();
         $allcategory = Category::all();
@@ -78,7 +86,9 @@ class PortfolioController extends Controller{
 
     }
 
-    public function update(Request $request, $slug){}
+    public function update(Request $request, $slug){
+        // unlink(base_path('public/uploads/profiles/'.User::where('id',$id)->first()->photo));
+    }
 
     public function destroy($slug){
         $post = Portfolio::where('slug',$slug)->first();

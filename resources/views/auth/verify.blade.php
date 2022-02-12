@@ -411,8 +411,8 @@
                                                                     </multiline>
                                                                     <br>
                                                                      <multiline>
-                                                                        <a href="{{ route('contactus') }}" style="color:#0094aa; text-decoration:underline;">
-                                                                            <span class="support" style="color:#0094aa;">{{ route('contactus') }}</span>
+                                                                        <a href="{{ route('/') }}" style="color:#0094aa; text-decoration:underline;">
+                                                                            <span class="support" style="color:#0094aa;">{{ route('/') }}</span>
                                                                         </a>
                                                                     </multiline>
 																</td>

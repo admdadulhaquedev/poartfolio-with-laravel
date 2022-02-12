@@ -15,7 +15,7 @@
 							<div class="row">
 								<div class="col-lg-3 col-sm-4">
 									<div class="photo">
-										<img alt="" src="{{ asset('uploads/frontend') }}/img/user-photo.png">
+										<img alt="" src="{{ asset('uploads/frontend/img') }}/{{ Auth::user()->photo }}">
 									</div>
 								</div>
 								<div class="col-lg-9 col-sm-8">
@@ -30,31 +30,21 @@
 									<div>
 										I am <span class="hmw-available">Available</span>
 										&nbsp; on
-										<a target="_blank" class="upwork_btn" href="https://www.upwork.com/share?url=http://www.example.com" target="_blank">Upwork</a>
+										<a target="_blank" class="upwork_btn" href="https://www.upwork.com/share?url=https://www.upwork.com/freelancers/~01d189ad8440c5dcdd" target="_blank">Upwork</a>
 									</div>
 								</div>
 
 								<div class="col-lg-9 col-sm-4 d-flex">
-									<!-- Icon Info -->
-									<div class="info-icon">
-										<a href="#">
-											<i class="fab fa-facebook-f"></i>
-										</a>
-									</div>
 
-									<!-- Icon Info -->
-									<div class="info-icon">
-										<a href="#">
-											<i class="fas fa-certificate"></i>
-										</a>
-									</div>
+                                    @foreach ($social_accounts as $social_account)
+                                        <!-- Icon Info -->
+                                        <div class="info-icon">
+                                            <a target="_blank" href="{{ $social_account->profile_link }}">
+                                                <i class="{{ $social_account->icon_class }}"></i>
+                                            </a>
+                                        </div>
+                                    @endforeach
 
-									<!-- Icon Info -->
-									<div class="info-icon">
-										<a href="#">
-											<i class="fas fa-user-astronaut"></i>
-										</a>
-									</div>
 								</div>
 								<div class="col-lg-3 col-sm-8 pt-50">
 									<a href="{{ asset('uploads/cv/amdadulhaquemelon-cv.pdf') }}" download class="btn-st">Download CV</a>
@@ -84,125 +74,38 @@
 						</div>
 						<!-- / Portfolio Filter -->
 
+
 						<!-- Portfolio Items -->
 						<div class="row mt-100 mb-100 portfolio-items">
+                            @foreach ($portfolios as $portfolio)
+                                <!-- Portfolio Item -->
+                                <div class="item col-lg-4 col-sm-6">
+                                    <figure>
+                                        <img alt="Project Logo" src="{{asset('uploads/potfollios/logos')}}/{{ $portfolio->logo }}">
+                                        <figcaption>
+                                            <h3>{{ $portfolio->title }}</h3>
+                                            <p>Graphic</p>
+                                            <a class="video-link" href="{{ route('singleportfolio', $portfolio->slug) }}"></a>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <!-- / Portfolio Item -->
+                            @endforeach
 
-							<!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6">
-								<figure>
-									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-1.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
-										<p>Graphic</p><i class="fas fa-image"></i>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item -->
-
-							<!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6 design">
-								<figure>
-									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-2.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
-										<p>Design</p><i class="fas fa-image"></i>
-										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item -->
-
-							<!-- Portfolio Item -->
+							{{-- <!-- Portfolio Item -->
 							<div class="item col-lg-4 col-sm-6 brand">
 								<figure>
 									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-3.jpg">
 									<figcaption>
 										<h3>Project Name</h3>
-										<p>Graphic</p><i class="fas fa-video"></i>
-										<a class="video-link" href="{{ route('singleportfolio', 2) }}"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item -->
-
-							<!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6 graphic">
-								<figure>
-									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-4.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
-										<p>Design</p><i class="fas fa-image"></i>
-										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item -->
-
-							<!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6 design">
-								<figure>
-									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-5.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
-										<p>Design</p><i class="fas fa-video"></i>
-										<a class="video-link" href="{{ route('singleportfolio', 2) }}"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item -->
-
-							<!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6 brand">
-								<figure>
-									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-6.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
-										<p>Brand</p><i class="fas fa-image"></i>
-										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item -->
-
-							<!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6 graphic">
-								<figure>
-									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-7.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
-										<p>Brand</p><i class="fas fa-image"></i>
-										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item -->
-
-							<!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6 design">
-								<figure>
-									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-8.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
-										<p>Brand</p><i class="fas fa-image"></i>
-										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item -->
-
-							<!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6 brand">
-								<figure>
-									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-9.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
 										<p>Graphic</p>
-                                        <i class="fas fa-image"></i>
-										<a class="image-link" href="{{ route('singleportfolio', 2) }}"></a>
+                                        <i class="fas fa-video"></i>
+										<a class="video-link" href="{{ route('singleportfolio', 2) }}"></a>
 									</figcaption>
 								</figure>
 							</div>
-							<!-- / Portfolio Item -->
+							<!-- / Portfolio Item --> --}}
+
 
 						</div>
 						<!-- / Portfolio Items -->
@@ -336,17 +239,17 @@
 					<div class="row">
 						<div class="col-lg-4 col-sm-12 info">
 							<i class="fas fa-paper-plane"></i>
-							<p>example@example.com</p>
+                            <p>{{ $contuct_info->email }}</p>
 							<span>Email</span>
 						</div>
 						<div class="col-lg-4 col-sm-12 info">
-							<i class="fas fa-map-marker-alt"></i>
-							<p>123 Lorem Ipsum, USA</p>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>{{ $contuct_info->address }}</p>
 							<span>Addres</span>
 						</div>
 						<div class="col-lg-4 col-sm-12 info">
-							<i class="fas fa-phone"></i>
-							<p>(+1) 123 456 7890</p>
+                            <i class="fas fa-phone"></i>
+                            <p>{{ $contuct_info->phone }}</p>
 							<span>Phone</span>
 						</div>
 					</div>

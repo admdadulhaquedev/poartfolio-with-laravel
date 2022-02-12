@@ -465,7 +465,7 @@ blockquote span img {
 	transform-origin: 0% 100%;
 }
 
-/* 
+/*
  * Transform all the slices of hamburger
  * into a crossmark.
  */
@@ -905,7 +905,7 @@ blockquote:before,
 
 /* Portfolio Item */
 .portfolio-items .item figure {
-	background-color: #25ca7f !important;
+	/* background-color: #25ca7f !important; */
 }
 
 .portfolio-items .item figure {
@@ -921,13 +921,17 @@ blockquote:before,
 	height: 350px;
 }
 
+
 .portfolio-items .item figure img {
 	opacity: 1;
-	width: 100%;
-	height: 100%;
 	-webkit-transition: all .3s;
 	transition: all .3s;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
+
 
 .portfolio-items .item figure figcaption {
 	position: absolute;
@@ -998,8 +1002,8 @@ blockquote:before,
 
 .portfolio-items .item figure:hover img {
 	opacity: 0.25;
-	-webkit-transform: scale(1.1);
-	transform: scale(1.1);
+	/* -webkit-transform: scale(1.1);
+	transform: scale(1.1); */
 }
 
 .portfolio-items .item figure:hover h3 {
@@ -1157,7 +1161,7 @@ blockquote:before,
 
 
 .portfolio-items .item figure {
-	background-color: #25ca7f !important;
+	/* background-color: #25ca7f !important; */
 }
 
 /* ---------------------------------
