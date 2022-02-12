@@ -134,4 +134,4 @@ This applications uses [Laravel](https://laravel.com/docs/8.x/authentication) - 
 
 If You face any error Please Contact me
 
-[Facbook](https://www.facebook.com/amdadulhaquemelonmia)
+[Facebook](https://www.facebook.com/amdadulhaquedev)
