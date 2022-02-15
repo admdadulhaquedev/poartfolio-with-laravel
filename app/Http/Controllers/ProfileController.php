@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cv;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller{
 
@@ -95,5 +97,30 @@ class ProfileController extends Controller{
     }
 
 
+    public function cv() {
+        return view('backend.cv.index');
+    }
+
+    public function cvupdate(Request $request) {
+
+
+        if($request->file('cv')){
+
+            unlink(base_path('public/uploads/cv/'.cv::where('id',1)->first()->cv));
+            $file = $request->file('cv');
+            $filename = Str::replace(' ', '-', Auth::user()->name) . '.' . $request->file('cv')->extension();
+            $filePath = public_path() . '/uploads/cv/';
+            $file->move($filePath, $filename);
+
+
+            cv::where('id',1)->update([
+                'cv' => $filename,
+            ]);
+
+        }
+        return redirect('cv');
+
+
+    }
 
 }

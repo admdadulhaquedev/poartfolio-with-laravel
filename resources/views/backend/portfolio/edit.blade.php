@@ -30,7 +30,7 @@
                         <!-- Add details -->
                         <div class="row">
                             <div class="col-12 blog-details">
-                                <form action="{{ route('post.update', $post_details->slug) }}" enctype="multipart/form-data" method="GET">
+                                <form action="{{ route('portfolio.update') }}" enctype="multipart/form-data" method="POST">
                                     @csrf
 
                                     @if ($errors->any())
@@ -42,18 +42,43 @@
                                     @endif
 
 
+                                    <input name="id" class="slug-input form-control" type="hidden" value="{{ $portfolio_details->id }}">
                                     <div class="form-group">
-                                        <label>Post Mega Title</label>
-                                        <input name="post_title" class="slug-input form-control" type="text" value="{{ $post_details->mega_title }}">
+                                        <label>Portfolio Title</label>
+                                        <input name="portfolio_title" class="slug-input form-control" type="text" value="{{ $portfolio_details->title }}">
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                <label>Website Header Logo</label>
+                                                <input name="portfolio_logo" class="form-control" type="file" onchange="document.getElementById('portfolio_logo').src = window.URL.createObjectURL(this.files[0])">
+
+                                                <small class="text-secondary">
+                                                    Recommended image size is <b>150px x 150px</b>
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <div class="">
+                                                    <div class="logo-image mb-0 text-center">
+                                                        <a href="#">
+                                                            <img id="portfolio_logo" class="logo" src="{{asset('uploads/portfolios/logos')}}/{{ $portfolio_details->logo }}">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Post Category</label>
-                                                <select name="post_category" id="drop_down"
-                                                    class="select select2-hidden-accessible form-control">
-                                                    <option value="{{ $post_details->category_id }}">{{ CategorybyID($post_details->category_id)->category_name }}</option>
+                                                <label>Portfolio Category</label>
+                                                <select name="portfolio_category" id="drop_down" class="select select2-hidden-accessible form-control">
+                                                    <option value="{{ $portfolio_details->category_id }}">{{ CategorybyID($portfolio_details->category_id)->category_name }}</option>
 
                                                     @foreach ($allcategory as $caegory)
                                                     <option value="{{ $caegory->id }}">
@@ -66,76 +91,38 @@
                                         </div>
                                     </div>
 
-                                    <!-- Summernote end -->
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="card-box">
-                                                <h4 class="header-title m-b-30">Default Editor</h4>
-                                                <textarea name="post_description" class="summernote">
-                                                    {{ $post_details->post_description }}
-                                                </textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Summernote end -->
-
-
                                     <!-- Tag Name Start-->
                                     <div class="form-group">
-                                        <label for="input">Tag Name</label>
-                                        <input value="{{ $post_details->meta_tags }}" data-role="tagsinput" type="text" id="tags_name" name="tags_name" class="form-control" placeholder="">
-                                        <small class="form-text text-muted">
-                                            Separate keywords with a comma, space bar,
-                                            or enter key
-                                        </small>
+                                        <label for="input">Project Link</label>
+                                        <input name="project_link" value="{{ $portfolio_details->project_link }}" type="text" class="form-control" >
                                     </div>
                                     <!-- Tag Name Start-->
 
                                     <!-- End row -->
                                     <div class="row">
-                                        @if (Auth::user()->role == 1)
                                         <div class="col-md-6">
                                             <div class="form-group mt-5">
                                                 <label class="display-block w-100">Active Status</label>
                                                 <div>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input name="post_status" class="custom-control-input"
-                                                            id="active" value="1" type="radio" {{ ($post_details->status == 1)?"checked":"" }}>
+                                                        <input name="portfolio_status" class="custom-control-input"
+                                                            id="active" value="1" type="radio" {{ ($portfolio_details->status == 1)?"checked":"" }}>
                                                         <label class="custom-control-label" for="active">Active</label>
                                                     </div>
                                                     <div class="custom-control custom-radio custom-control-inline">
-                                                        <input name="post_status" class="custom-control-input"
-                                                            id="inactive" value="0" type="radio" {{ ($post_details->status == 1)?"":"checked" }}>
+                                                        <input name="portfolio_status" class="custom-control-input"
+                                                            id="inactive" value="0" type="radio" {{ ($portfolio_details->status == 1)?"":"checked" }}>
                                                         <label class="custom-control-label"
                                                             for="inactive">Inactive</label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        @endif
 
-                                        <div class="col-md-6">
-                                            <div class="form-group mt-5">
-                                                <label class="display-block w-100">Fetuer Status</label>
-                                                <div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input name="fetuer_status" class="custom-control-input"
-                                                            id="fetuer_active" value="1" type="radio">
-                                                        <label class="custom-control-label"
-                                                            for="fetuer_active">Active</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline">
-                                                        <input name="fetuer_status" class="custom-control-input"
-                                                            id="fetuer_inactive" value="0" type="radio" checked="">
-                                                        <label class="custom-control-label" for="fetuer_inactive">Inactive</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
 
                                     <div class="m-t-20 text-center">
-                                        <button type="submit" class="btn btn-primary btn-lg">Update Post</button>
+                                        <button type="submit" class="btn btn-primary btn-lg">Update Portfolio</button>
                                     </div>
 
                                 </form>

@@ -253,6 +253,21 @@
                         <!-- /Only for Administrator -->
                         <!-- /EMAIL -->
 
+
+                        <!-- CV -->
+                            <li class="submenu">
+                                <a class="{{ ((Request::route()->getName() == 'cv')) ? 'active' : '' }}" href="#">
+                                    <span>CV</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul style="display: none;">
+                                    <li>
+                                        <a class="{{ (Request::route()->getName() == 'cv') ? 'active' : '' }}" href="{{ route('cv') }}">CV Update</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        <!-- /CV -->
+
                         <!-- POST -->
                         <li class="submenu">
                             <a class="{{ ((Request::route()->getName() == 'portfolio.index')||(Request::route()->getName() == 'portfolio.create')) ? 'active' : '' }}" href="#">

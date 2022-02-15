@@ -50,7 +50,7 @@ class PortfolioController extends Controller{
 
         // Make & Save Img
         $img = Image::make($request->file("portfolio_logo"));
-        $img->save(base_path('public/uploads/potfollios/logos/'.$portfolio_logo_name));
+        $img->save(base_path('public/uploads/portfolios/logos/'.$portfolio_logo_name));
 
         $portfolio_id = Portfolio::insertGetId([
             'title' => $request->title,
@@ -76,18 +76,66 @@ class PortfolioController extends Controller{
 
 
     public function edit($slug){
-        $post_details = Portfolio::where('slug',$slug)->first();
+        $portfolio_details = Portfolio::where('slug',$slug)->first();
         $allcategory = Category::all();
 
         return view('backend.portfolio.edit',[
-            'post_details' => $post_details,
+            'portfolio_details' => $portfolio_details,
             'allcategory' => $allcategory,
         ]);
 
     }
 
-    public function update(Request $request, $slug){
-        // unlink(base_path('public/uploads/profiles/'.User::where('id',$id)->first()->photo));
+    public function update(Request $request){
+
+        $request->validate([
+            'portfolio_title' => 'required',
+            'portfolio_category' => 'required',
+            'project_link' => 'required',
+            'portfolio_status' => 'required',
+        ]);
+
+
+        // Slug Create
+        function make_slugupdate($string) {
+            return preg_replace('/\s+/u', '-', trim($string));
+        }
+
+        $portfolio_slug = make_slugupdate(Str::lower($request->portfolio_title));
+
+        // Portfolio
+        Portfolio::where('id', $request->id)->update([
+            'title' => $request->portfolio_title,
+            'category_id' => $request->portfolio_category,
+            'slug' => $portfolio_slug,
+            'status' => $request->portfolio_status,
+            'project_link' => $request->project_link,
+        ]);
+
+
+        // Portfolio logo
+        if ($request->hasFile('portfolio_logo')) {
+
+            // Delete Old Img
+            unlink(base_path('public/uploads/portfolios/logos/'.Portfolio::where('id',$request->id)->first()->logo));
+
+            // New Img Name Create
+            $portfolio_logo_ext = $request->file('portfolio_logo')->getClientOriginalExtension();
+            $portfolio_logo_name = "portfolio"."-"."logo"."-".Str::lower($request->title).".".$portfolio_logo_ext;
+
+            // Make & Save Img
+            $img = Image::make($request->file('portfolio_logo'));
+            $img->save(base_path('public/uploads/portfolios/logos/'.$portfolio_logo_name));
+
+            // Update Database
+            Portfolio::where('id',$request->id)->update([
+                'logo' => $portfolio_logo_name,
+            ]);
+
+        }
+
+        return redirect('portfolio');
+
     }
 
     public function destroy($slug){

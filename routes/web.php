@@ -33,6 +33,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('profile', ProfileController::class);
 Route::post('profile/photo/update{id}', [ProfileController::class, 'profilephotoupdate'])->name('profilephoto.update');
 Route::post('password/change', [ProfileController::class, 'passwordChange'])->name('password.change');
+Route::post('cv/update', [ProfileController::class, 'cvupdate'])->name('cv.update');
+Route::get('cv', [ProfileController::class, 'cv'])->name('cv');
 
 // Category Controller
 Route::get('category', [CategoryController::class, 'index'])->name('category.index');
@@ -54,10 +56,10 @@ Route::post('portfolio/images/store', [PortfolioImagesController::class, 'store'
 // Portfolio Controller
 Route::get('portfolio', [PortfolioController::class, 'index'])->name('portfolio.index')->middleware('rolecheck');
 Route::get('portfolio/create', [PortfolioController::class, 'create'])->name('portfolio.create');
-Route::get('portfolio/show{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
-Route::get('portfolio/edit{slug}', [PortfolioController::class, 'edit'])->name('portfolio.edit');
+Route::get('portfolio/show/{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
+Route::get('portfolio/edit/{slug}', [PortfolioController::class, 'edit'])->name('portfolio.edit');
 Route::post('portfolio/store', [PortfolioController::class, 'store'])->name('portfolio.store');
-Route::get('portfolio/update{slug}', [PortfolioController::class, 'update'])->name('portfolio.update');
+Route::post('portfolio/update', [PortfolioController::class, 'update'])->name('portfolio.update');
 Route::get('portfolio/destroy{slug}', [PortfolioController::class, 'destroy'])->name('portfolio.destroy');
 
 

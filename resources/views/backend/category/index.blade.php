@@ -60,7 +60,7 @@
                                             <td class="text-right">
                                                 <div class="actions">
                                                     <a class="btn btn-sm bg-success-light category_edit" data-toggle="modal" href="#edit_modal">
-                                                        <input type="hidden" name="edit_category" value="{{ $category->id }}">
+                                                        <input type="hidden" data-id="{{ $category->id }}" name="edit_category" value="{{ $category->id }}">
                                                         <i class="fe fe-pencil"></i>
                                                         Edit
                                                     </a>

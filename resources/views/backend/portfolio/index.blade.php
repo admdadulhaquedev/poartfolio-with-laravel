@@ -27,9 +27,8 @@
                             <table class="datatable table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th>Author Name</th>
                                         <th>Portfolio Title</th>
-                                        <th>Portfolio Time</th>
+                                        <th>Portfolio Logo</th>
                                         <th>Status</th>
                                         <th class="text-right">Action</th>
                                     </tr>
@@ -38,19 +37,9 @@
                                     @foreach ($all_portfolio as $key => $portfolio)
 
                                         <tr>
+                                            <td class="text">{{ $portfolio->title }}</td>
                                             <td>
-                                                <h2 class="table-avatar">
-                                                    <a href="#" class="avatar avatar-sm mr-2">
-                                                        <img class="avatar-img rounded-circle" src="{{ asset('uploads/profiles') }}/{{ $portfolio->relationtouser->photo }}"alt="User Image"></a>
-                                                    <a href="#">{{ $portfolio->relationtouser->name }}</a>
-                                                </h2>
-                                            </td>
-                                            <td class="text">{{ $portfolio->mega_title }}</td>
-                                            <td>
-                                                {{ $portfolio->created_at->format('M d Y') }}
-                                                <span class="text-primary d-block">
-                                                    {{ $portfolio->created_at->format('h:m:s') }}
-                                                </span>
+                                                <img class="w-60" src="{{asset('uploads/portfolios/logos')}}/{{ $portfolio->logo }}" alt="">
                                             </td>
 
                                             <td class="text-center">

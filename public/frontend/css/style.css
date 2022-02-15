@@ -961,6 +961,7 @@ blockquote:before,
 	font-weight: 700;
 	-webkit-transition: all .3s;
 	transition: all .3s;
+    text-align: center;
 }
 
 .portfolio-items .item figure figcaption p {

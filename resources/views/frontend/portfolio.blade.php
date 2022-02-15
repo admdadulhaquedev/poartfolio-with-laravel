@@ -121,7 +121,7 @@
 							<p>© Copyright 2021 <a href="#">Amdadul Haque</a>. All Rights Reserved | Developed By <a
 									href="#">Amdadul Haque</a>.</p>
 						</div>
-						<!-- End Copyright -->
+						<!-- End Copyrightxa -->
 					</div>
 
 

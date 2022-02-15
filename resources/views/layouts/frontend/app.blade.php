@@ -70,6 +70,8 @@
     <script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
 
+    @yield('footer_script')
+
 </body>
 
 </html>

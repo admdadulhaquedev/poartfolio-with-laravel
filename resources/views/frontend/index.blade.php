@@ -15,7 +15,7 @@
 							<div class="row">
 								<div class="col-lg-3 col-sm-4">
 									<div class="photo">
-										<img alt="" src="{{ asset('uploads/frontend/img') }}/{{ Auth::user()->photo }}">
+										<img alt="" src="{{ asset('uploads/frontend/img') }}/{{ UserInfo()->photo }}">
 									</div>
 								</div>
 								<div class="col-lg-9 col-sm-8">
@@ -66,9 +66,11 @@
 							<div class="col-lg-12 col-sm-12 portfolio-filter">
 								<ul>
 									<li class="active" data-filter="*">All</li>
-									<li data-filter=".design">Blog</li>
-									<li data-filter=".graphic">PSD to HTML</li>
-									<li data-filter=".brand">Web Aplication</li>
+
+                                    @foreach ($categories as $category)
+									    <li data-id="{{ $category->id }}" data-filter=".0{{ $category->id }}">{{ $category->category_name }}</li>
+                                    @endforeach
+
 								</ul>
 							</div>
 						</div>
@@ -77,38 +79,25 @@
 
 						<!-- Portfolio Items -->
 						<div class="row mt-100 mb-100 portfolio-items">
+
                             @foreach ($portfolios as $portfolio)
                                 <!-- Portfolio Item -->
-                                <div class="item col-lg-4 col-sm-6">
+                                <div class="item col-lg-4 col-sm-6 0{{ $portfolio->category_id }}">
                                     <figure>
-                                        <img alt="Project Logo" src="{{asset('uploads/potfollios/logos')}}/{{ $portfolio->logo }}">
+                                        <img alt="Project Logo" src="{{asset('uploads/portfolios/logos')}}/{{ $portfolio->logo }}">
                                         <figcaption>
-                                            <h3>{{ $portfolio->title }}</h3>
-                                            <p>Graphic</p>
+                                            <h3>{{ $portfolio->title }}</h3  >
+                                            <p>{{ CategorybyID($portfolio->category_id)->category_name }}</p>
                                             <a class="video-link" href="{{ route('singleportfolio', $portfolio->slug) }}"></a>
                                         </figcaption>
                                     </figure>
                                 </div>
-                                <!-- / Portfolio Item -->
+                                <!-- / Portfolio   Item -->
                             @endforeach
-
-							{{-- <!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6 brand">
-								<figure>
-									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-3.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
-										<p>Graphic</p>
-                                        <i class="fas fa-video"></i>
-										<a class="video-link" href="{{ route('singleportfolio', 2) }}"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item --> --}}
-
 
 						</div>
 						<!-- / Portfolio Items -->
+
 
 						<!-- All View Button -->
 						<div class="row mt-100 mb-90">
@@ -294,4 +283,17 @@
 
 	</div>
 	<!-- / Main Page -->
+@endsection
+
+@section("footer_script")
+<script type="text/javascript">
+
+    jQuery(document).ready(function () {
+
+
+
+    });
+
+
+</script>
 @endsection

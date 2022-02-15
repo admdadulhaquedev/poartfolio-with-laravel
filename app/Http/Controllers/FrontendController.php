@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\RecivedEmail;
+use App\Models\Category;
 use App\Models\ContactInfo;
 use App\Models\ContactUs;
 use App\Models\Portfolio;
@@ -19,16 +20,16 @@ class FrontendController extends Controller{
 
     public function index(){
 
-        $portfolios = Portfolio::all();
         $contuct_info = ContactInfo::first();
         $social_accounts = SocialLink::all();
-
-
+        $categories = Category::all();
+        $portfolios = Portfolio::all();
 
         return view('frontend.index',[
             'portfolios' => $portfolios,
             'contuct_info' => $contuct_info,
             'social_accounts' => $social_accounts,
+            'categories' => $categories,
         ]);
     }
 
