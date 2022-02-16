@@ -14,10 +14,9 @@
 					<!-- Header Block -->
 					<div class="col-md-12">
 						<div class="mb-25 text-center">
-							<img src="{{ asset('uploads/settings/footer-logo.png') }}" alt="">
+							<img src="{{ asset('uploads/portfolios/logos') }}/{{ $single_portfolio->logo }}" alt="">
 						</div>
 					</div>
-
 
 				</div>
 			</div>
@@ -31,8 +30,8 @@
 					<!-- Header Block -->
 					<div class="col-md-12">
 						<div class="mb-25 text-left">
-							<h5 class="mb-2">Blog</h5>
-							<h2>News Portal</h2>
+							<h5 class="mb-2">{{ CategorybyID($single_portfolio->category_id)->category_name }}</h5>
+							<h2>{{ $single_portfolio->title }}</h2>
 						</div>
 					</div>
 
@@ -40,6 +39,7 @@
 				</div>
 			</div>
 			<!-- / Service Section -->
+
 
 			<!-- Pritfolio Section -->
 			<div class="protfolio_section">
@@ -49,41 +49,19 @@
 						<!-- Portfolio Items -->
 						<div class="row mt-10 mb-100 portfolio-items">
 
-							<!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6">
-								<figure>
-                                    <img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-1.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
-                                        <a data-group="1" class="galleryItem image-link" href="{{asset('uploads/frontend')}}/img/portfolio/img-1.jpg"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item -->
-
-							<!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6">
-								<figure>
-									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-2.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
-                                        <a data-group="1" class="galleryItem image-link" href="{{asset('uploads/frontend')}}/img/portfolio/img-2.jpg"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item -->
-
-							<!-- Portfolio Item -->
-							<div class="item col-lg-4 col-sm-6">
-								<figure>
-									<img alt="" src="{{asset('uploads/frontend')}}/img/portfolio/img-3.jpg">
-									<figcaption>
-										<h3>Project Name</h3>
-                                        <a data-group="1" class="galleryItem image-link" href="{{asset('uploads/frontend')}}/img/portfolio/img-2.jpg"></a>
-									</figcaption>
-								</figure>
-							</div>
-							<!-- / Portfolio Item -->
+                            @foreach ($portfolio_images as $portfolio_image)
+                                <!-- Portfolio Item -->
+                                <div class="item col-lg-4 col-sm-6">
+                                    <figure>
+                                        <img alt="" src="{{asset('uploads/portfolios')}}/{{ $portfolio_image->portfolio_images }}">
+                                        <figcaption>
+                                            <h3>{{ $portfolio_image->images_title }}</h3>
+                                            <a data-group="1" class="galleryItem image-link" href="{{asset('uploads/portfolios')}}/{{ $portfolio_image->portfolio_images }}"></a>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <!-- / Portfolio Item -->
+                            @endforeach
 
 						</div>
 						<!-- / Portfolio Items -->
@@ -93,9 +71,9 @@
 				</div>
                 <div class="row">
                     <div class="col-12 d-flex">
-                        <h4 class="mr-1">Visit Here</h4>
-                        <a href="">
-                             <h4>Per care Lover</h4>
+                        <h4 class="mr-1">Visit Here : </h4>
+                        <a target="_blank" href="{{ $single_portfolio->project_link }}">
+                             <h4>Project View</h4>
                         </a>
                     </div>
                 </div>

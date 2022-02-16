@@ -12,7 +12,7 @@
                     <h3 class="page-title">Add Portfolio</h3>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="index.html">Dashboard</a>
+                            <a href="{{ route('home') }}">Dashboard</a>
                         </li>
                         <li class="breadcrumb-item active">Add Portfolio</li>
                     </ul>

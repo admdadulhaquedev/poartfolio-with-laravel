@@ -47,7 +47,7 @@
 
 								</div>
 								<div class="col-lg-3 col-sm-8 pt-50">
-									<a href="{{ asset('uploads/cv/amdadulhaquemelon-cv.pdf') }}" download class="btn-st">Download CV</a>
+									<a href="{{ asset('uploads/cv') }}/{{ $cv->cv }}" download class="btn-st">Download CV</a>
 								</div>
 							</div>
 						</div>
@@ -76,7 +76,6 @@
 						</div>
 						<!-- / Portfolio Filter -->
 
-
 						<!-- Portfolio Items -->
 						<div class="row mt-100 mb-100 portfolio-items">
 
@@ -88,7 +87,7 @@
                                         <figcaption>
                                             <h3>{{ $portfolio->title }}</h3  >
                                             <p>{{ CategorybyID($portfolio->category_id)->category_name }}</p>
-                                            <a class="video-link" href="{{ route('singleportfolio', $portfolio->slug) }}"></a>
+                                            <a target="_blank" class="video-link" href="{{ route('singleportfolio', $portfolio->slug) }}"></a>
                                         </figcaption>
                                     </figure>
                                 </div>
@@ -97,7 +96,6 @@
 
 						</div>
 						<!-- / Portfolio Items -->
-
 
 						<!-- All View Button -->
 						<div class="row mt-100 mb-90">
@@ -206,12 +204,12 @@
 									<div class="col-lg-12 col-sm-12">
 										<div class="error-messages">
 											<div id="success">
-												<i class="far fa-check-circle"></i>Thank you, your
-												message has been sent.
+												<i class="far fa-check-circle"></i>
+                                                Thank you, your message has been sent.
 											</div>
 											<div id="error">
-												<i class="far fa-times-circle"></i>Error occurred
-												while sending email. Please try again later.
+												<i class="far fa-times-circle"></i>
+                                                Error occurred while sending email. Please try again later.
 											</div>
 										</div>
 									</div>
@@ -228,7 +226,9 @@
 					<div class="row">
 						<div class="col-lg-4 col-sm-12 info">
 							<i class="fas fa-paper-plane"></i>
-                            <p>{{ $contuct_info->email }}</p>
+                            <p>
+                                <a href="mailto:{{ $contuct_info->email }}">{{ $contuct_info->email }}</a>
+                            </p>
 							<span>Email</span>
 						</div>
 						<div class="col-lg-4 col-sm-12 info">
@@ -238,7 +238,7 @@
 						</div>
 						<div class="col-lg-4 col-sm-12 info">
                             <i class="fas fa-phone"></i>
-                            <p>{{ $contuct_info->phone }}</p>
+                            <p><a href="callto:{{ $contuct_info->phone }}">{{ $contuct_info->phone }}</a></p>
 							<span>Phone</span>
 						</div>
 					</div>
@@ -261,8 +261,11 @@
 					<div class="col-lg-10 text-left">
 						<!-- Copyright -->
 						<div class="copyright">
-							<p>© Copyright 2021 <a href="#">Amdadul Haque</a>. All Rights Reserved | Developed By <a
-									href="#">Amdadul Haque</a>.</p>
+							<p>© Copyright 2021
+                                <a href="#">Amdadul Haque</a>.
+                                    All Rights Reserved | Developed By
+                                <a href="#">Amdadul Haque</a>.
+                            </p>
 						</div>
 						<!-- End Copyright -->
 					</div>
