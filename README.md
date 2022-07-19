@@ -21,7 +21,7 @@ Please check the official laravel installation guide for server requirements bef
 
 Clone the repository
 
-    git clone git@github.com:admdadulhaquedev/poartfolio.git
+    git clone git@github.com:amdadulhaque-dev/poartfolio.git
 
 Switch to the repo folder
 
@@ -55,7 +55,7 @@ You can now access the server at http://localhost:8000
 
 **TL;DR command list**
 
-    git clone git@github.com:admdadulhaquedev/poartfolio.git
+    git clone git@github.com:amdadulhaque-dev/poartfolio.git
     cd laravel-realworld-example-app
     composer install
     cp .env.example .env
